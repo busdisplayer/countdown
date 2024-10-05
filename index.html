@@ -1,2 +1,34 @@
-<iframe width="300" height="154" src="https://w2.countingdownto.com/5818742" frameborder="0"></iframe>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte à rebours</title>
+    <style>
+        /* Faire en sorte que le iframe prenne 100% de la largeur de l'écran */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
 
+        .iframe-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* La hauteur de la page est égale à 100% de la hauteur de la fenêtre */
+        }
+
+        iframe {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="iframe-container">
+        <iframe width="300" height="154" src="https://w2.countingdownto.com/5818742" frameborder="0"></iframe>
+    </div>
+</body>
+</html>
