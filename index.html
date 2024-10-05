@@ -3,32 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compte à rebours</title>
+    <title>Compte à rebours - 12 octobre 2024</title>
     <style>
-        /* Faire en sorte que le iframe prenne 100% de la largeur de l'écran */
         body, html {
-            margin: 0;
-            padding: 0;
             height: 100%;
-        }
-
-        .iframe-container {
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* La hauteur de la page est égale à 100% de la hauteur de la fenêtre */
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
         }
 
-        iframe {
-            width: 100%;
-            height: auto;
-            max-width: 100%;
+        #countdown {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 2em;
+        }
+
+        #countdown span {
+            display: block;
+            font-size: 1.5em;
         }
     </style>
 </head>
 <body>
-    <div class="iframe-container">
-        <iframe width="300" height="154" src="https://w2.countingdownto.com/5818742" frameborder="0"></iframe>
+
+    <div id="countdown">
+        <span id="days">0</span> Jours
+        <span id="hours">0</span> Heures
+        <span id="minutes">0</span> Minutes
+        <span id="seconds">0</span> Secondes
     </div>
+
+    <script>
+        // Définir la date cible
+        var countDownDate = new Date("October 12, 2024 00:00:00").getTime();
+
+        // Mettre à jour le compte à rebours toutes les secondes
+        var countdownFunction = setInterval(function() {
+            // Obtenir l'heure actuelle
+            var now = new Date().getTime();
+
+            // Calculer la différence entre maintenant et la date cible
+            var distance = countDownDate - now;
+
+            // Calculer le temps restant en jours, heures, minutes, secondes
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Afficher les résultats dans les éléments correspondants
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            // Si le compte à rebours est terminé
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "Le compte à rebours est terminé !";
+            }
+        }, 1000);
+    </script>
+
 </body>
 </html>
